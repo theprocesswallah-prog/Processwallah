@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processwallah | Manufacturing Systems, Automation & Process Control</title>
+    <meta name="description" content="Replace manual factory chaos with structured digital workflows. Customized BOM systems, work order tracking, and process control systems.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SYSTEM INITIALIZATION LOADER -->
+    <div id="loader" class="loader-container">
+        <div class="loader-content">
+            <div class="loader-logo">PROCESSWALLAH</div>
+            <div class="loader-progress-bar">
+                <div class="loader-progress-fill" id="loader-fill"></div>
+            </div>
+            <div class="loader-status" id="loader-text">INITIALIZING CORE SYSTEMS...</div>
+            <div class="loader-console" id="loader-console"></div>
+        </div>
+    </div>
+
+    <!-- HUD BACKGROUND GRADIENTS & GRID -->
+    <div class="hud-grid"></div>
+    <canvas id="flowCanvas"></canvas>
+
+    <!-- HEADER NAVIGATION -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo-area">
+                <span class="logo-icon"><i data-lucide="cpu"></i></span>
+                <div class="logo-text">
+                    <span class="logo-title">PROCESSWALLAH</span>
+                    <span class="logo-subtitle">SYSTEMS & CONTROL</span>
+                </div>
+            </a>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-item active">Home</a>
+                <a href="#status" class="nav-item">System Status</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#solutions" class="nav-item">Solutions</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#contact" class="nav-btn">Connect</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="content-wrapper">
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-text-block">
+                    <div class="system-tag"><span class="pulse-dot"></span> INDUSTRIAL ARCHITECTURE</div>
+                    <h1 class="hero-title">PROCESSWALLAH</h1>
+                    <p class="hero-tagline">"Manufacturing runs on machines.<br>Growth runs on systems."</p>
+                    <p class="hero-subtitle">Helping manufacturing companies replace manual chaos with structured digital workflows and custom automation tools.</p>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Projects</span> <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Contact Control Room</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Hero HUD Widget -->
+                <div class="hero-hud-widget glass-card">
+                    <div class="hud-header">
+                        <div class="hud-header-title"><i data-lucide="activity"></i> CORE CONTROLLER</div>
+                        <div class="hud-header-status">ONLINE</div>
+                    </div>
+                    <div class="hud-body">
+                        <div class="radar-container">
+                            <div class="radar-sweep"></div>
+                            <div class="radar-grid"></div>
+                            <div class="node node-1 active"></div>
+                            <div class="node node-2 active"></div>
+                            <div class="node node-3"></div>
+                        </div>
+                        <div class="hud-data-lines">
+                            <div class="data-line"><span>SYS.CLOCK</span> <span class="mono-value" id="systemClock">00:00:00 UTC</span></div>
+                            <div class="data-line"><span>LOAD FACTOR</span> <span class="mono-value">42.8%</span></div>
+                            <div class="data-line"><span>DATA FLOW</span> <span class="mono-value" id="randomDataFlow">1,240 KB/S</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LIVE SYSTEM STATUS -->
+        <section id="status" class="status-section scroll-reveal">
+            <div class="section-header">
+                <div class="section-tag">REAL-TIME TELEMETRY</div>
+                <h2 class="section-title">System Status</h2>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Status Console Row -->
+                <div class="dashboard-console glass-card">
+                    <div class="console-header">
+                        <span>OPERATIONAL SUB-SYSTEMS</span>
+                        <span class="ticker-green">ALL SYSTEMS FUNCTIONAL</span>
+                    </div>
+                    <div class="status-table">
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="layers"></i> BOM AUTOMATION</div>
+                            <div class="status-col indicator"><span class="status-dot online"></span> <span class="status-txt online">ONLINE</span></div>
+                            <div class="status-col metric">LATENCY: 12ms</div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="file-text"></i> WORK ORDER SYSTEM</div>
+                            <div class="status-col indicator"><span class="status-dot online"></span> <span class="status-txt online">ONLINE</span></div>
+                            <div class="status-col metric">LOAD: 14%</div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="shield-check"></i> INSPECTION DASHBOARD</div>
+                            <div class="status-col indicator"><span class="status-dot online"></span> <span class="status-txt online">ONLINE</span></div>
+                            <div class="status-col metric">SENSORS: 99.8%</div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="users"></i> CLIENT PORTAL</div>
+                            <div class="status-col indicator"><span class="status-dot development"></span> <span class="status-txt development">DEVELOPMENT</span></div>
+                            <div class="status-col metric">STAGING V1.2</div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="check-square"></i> TASK MANAGEMENT</div>
+                            <div class="status-col indicator"><span class="status-dot active"></span> <span class="status-txt active">ACTIVE</span></div>
+                            <div class="status-col metric">TASKS: 154 RUNNING</div>
+                        </div>
+                        <div class="status-row">
+                            <div class="status-col name"><i data-lucide="settings-2"></i> PROCESS CONTROL</div>
+                            <div class="status-col indicator"><span class="status-dot running"></span> <span class="status-txt running">RUNNING</span></div>
+                            <div class="status-col metric">STABILITY: 100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ABOUT SECTION -->
+        <section id="about" class="about-section scroll-reveal">
+            <div class="about-grid">
+                <div class="about-visual glass-card">
+                    <div class="card-corner-top"></div>
+                    <div class="schematic-mockup">
+                        <div class="schematic-circle"></div>
+                        <div class="schematic-line-h"></div>
+                        <div class="schematic-line-v"></div>
+                        <i data-lucide="wrench" class="schematic-center-icon"></i>
+                    </div>
+                </div>
+                <div class="about-text-content">
+                    <div class="section-tag">THE REVOLUTIONARY ANCHOR</div>
+                    <h2 class="section-title">Built From The Factory Floor</h2>
+                    <p class="about-highlight">Ahmed Arshi is a Process Control Professional with hands-on experience in manufacturing operations, inventory control, workflow automation, production planning, inspection systems, and business process optimization.</p>
+                    <p class="about-p">Unlike traditional software consultants, Processwallah is built from real factory experiences. We do not pitch generic technology templates. We build custom logic engines that map exactly to your factory floor's physical reality, eliminating human-error bottlenecks where they actually happen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. JOURNEY TIMELINE -->
+        <section id="timeline" class="timeline-section scroll-reveal">
+            <div class="section-header center">
+                <div class="section-tag">CHRONOLOGY</div>
+                <h2 class="section-title">Operational Journey</h2>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-year">2019</div>
+                        <h3 class="timeline-title">Joined Manufacturing Industry</h3>
+                        <p class="timeline-desc">First-hand exposure to operational bottlenecks, floor layouts, and coordination issues standard across manual production lines.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-year">2020</div>
+                        <h3 class="timeline-title">Store Operations</h3>
+                        <p class="timeline-desc">Managing structured inventory tracking, visual organizing, receipt workflows, and manual component reconciliation models.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-year">2022</div>
+                        <h3 class="timeline-title">Store Management</h3>
+                        <p class="timeline-desc">Implementing automated databases for component dispatch cycles, reducing operational tracking waste across processing units.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-year">2025</div>
+                        <h3 class="timeline-title">Process Control & Workflow Design</h3>
+                        <p class="timeline-desc">Designing dynamic material routing pipelines and inspection systems, saving thousands of manual tracking hours.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-year">2026</div>
+                        <h3 class="timeline-title">Building Processwallah</h3>
+                        <p class="timeline-desc">Consolidating half a decade of real factory engineering experience into customized control architectures for manufacturing operations globally.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SOLUTIONS SECTION -->
+        <section id="solutions" class="solutions-section scroll-reveal">
+            <div class="section-header">
+                <div class="section-tag">CAPABILITIES</div>
+                <h2 class="section-title">Engineered Solutions</h2>
+            </div>
+
+            <div class="solutions-grid">
+                <!-- 1. BOM Management System -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">01</span>
+                        <div class="solution-icon"><i data-lucide="layers"></i></div>
+                    </div>
+                    <h3 class="solution-title">BOM Management System</h3>
+                    <p class="solution-desc">Automated bill of material creation and management. Links physical stock updates to multi-level bill structures instantly.</p>
+                </div>
+
+                <!-- 2. Work Order Automation -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">02</span>
+                        <div class="solution-icon"><i data-lucide="clipboard-list"></i></div>
+                    </div>
+                    <h3 class="solution-title">Work Order Automation</h3>
+                    <p class="solution-desc">Instantly generate and track manufacturing work orders. Keep floor staff updated without messy physical paperwork trails.</p>
+                </div>
+
+                <!-- 3. Inspection Dashboard -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">03</span>
+                        <div class="solution-icon"><i data-lucide="gauge"></i></div>
+                    </div>
+                    <h3 class="solution-title">Inspection Dashboard</h3>
+                    <p class="solution-desc">Real-time quality monitoring and performance reports. Identify reject rates and root causes using streamlined dashboard pipelines.</p>
+                </div>
+
+                <!-- 4. Task Management System -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">04</span>
+                        <div class="solution-icon"><i data-lucide="check-square"></i></div>
+                    </div>
+                    <h3 class="solution-title">Task Management</h3>
+                    <p class="solution-desc">Department-wise accountability modules. Eliminate missing verbal handovers with verifiable, systemic process timelines.</p>
+                </div>
+
+                <!-- 5. Client Portal -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">05</span>
+                        <div class="solution-icon"><i data-lucide="database"></i></div>
+                    </div>
+                    <h3 class="solution-title">Client Portal</h3>
+                    <p class="solution-desc">Secure client access to reports, production statuses, project configurations, and completed inspection sheets.</p>
+                </div>
+
+                <!-- 6. Process Design -->
+                <div class="solution-card glass-card">
+                    <div class="solution-header">
+                        <span class="solution-number">06</span>
+                        <div class="solution-icon"><i data-lucide="workflow"></i></div>
+                    </div>
+                    <h3 class="solution-title">Process Design</h3>
+                    <p class="solution-desc">End-to-end manufacturing workflow optimization maps. Redesign actual raw layouts for optimized processing speed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PROJECTS SECTION -->
+        <section id="projects" class="projects-section scroll-reveal">
+            <div class="section-header">
+                <div class="section-tag">ENGINEERING IN ACTION</div>
+                <h2 class="section-title">Completed Architectures</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: BOM_AUTO</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="layers" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">BOM Automation Platform</h3>
+                        <p class="project-desc">Standardized raw component linking layouts, eliminating multi-stage calculation mistakes across stock units.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: WORK_ORD</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="file-spreadsheet" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Work Order Management System</h3>
+                        <p class="project-desc">A floor status tool that links active production progress data directly with logistics coordinators.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: INSP_ANALYTICS</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="line-chart" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Inspection Analytics Dashboard</h3>
+                        <p class="project-desc">A graphical reject inspection metrics log, displaying production quality patterns in real-time.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: TASK_TRACK</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="clock" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Task Tracking Platform</h3>
+                        <p class="project-desc">Dynamic floor accountability metrics showing cycle timelines across processing phases.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: PORTAL_SYS</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="globe" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Customer Portal</h3>
+                        <p class="project-desc">A direct delivery transparency dashboard linking B2B clients to live inspection reports.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass-card">
+                    <div class="project-img-placeholder">
+                        <div class="project-overlay-data">
+                            <span>SYS_TYPE: PLAN_ENGINE</span>
+                            <span>NODE_STATUS: ACTIVE</span>
+                        </div>
+                        <i data-lucide="calendar" class="placeholder-icon"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="project-title">Production Planning System</h3>
+                        <p class="project-desc">A component tracking model matching actual physical material levels with shift timetables.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. WHY PROCESSWALLAH -->
+        <section id="why" class="why-section scroll-reveal">
+            <div class="section-header center">
+                <div class="section-tag">TELEMETRY STATS</div>
+                <h2 class="section-title">Verified Field Metrics</h2>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Years Manufacturing Experience</div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">Business Systems Developed</div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-suffix">%</div>
+                    <div class="stat-label">Manufacturing-Focused Solutions</div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-number" data-target="360">0</div>
+                    <div class="stat-suffix">°</div>
+                    <div class="stat-label">Real Factory Floor Understanding</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CONTACT SECTION -->
+        <section id="contact" class="contact-section scroll-reveal">
+            <div class="contact-container glass-card">
+                <div class="contact-glow-overlay"></div>
+                <div class="contact-header">
+                    <div class="section-tag">COMMUNICATION LINK</div>
+                    <h2 class="section-title">Let's Build Better Systems</h2>
+                    <p class="contact-subtitle">Connect directly to discuss customized workflow, inventory planning, or automation requirements on your factory floor.</p>
+                </div>
+
+                <div class="contact-info-grid">
+                    <a href="mailto:info@processwallah.com" class="contact-link-card">
+                        <div class="link-icon"><i data-lucide="mail"></i></div>
+                        <div class="link-details">
+                            <span class="link-label">SECURE ENCRYPTED EMAIL</span>
+                            <span class="link-val">info@processwallah.com</span>
+                        </div>
+                    </a>
+
+                    <a href="http://www.processwallah.com" target="_blank" class="contact-link-card">
+                        <div class="link-icon"><i data-lucide="globe"></i></div>
+                        <div class="link-details">
+                            <span class="link-label">SECURE PORTAL NODE</span>
+                            <span class="link-val">www.processwallah.com</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="mailto:info@processwallah.com" class="btn btn-primary glow-pulse">
+                        <span>Contact Now</span> <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="footer-logo">PROCESSWALLAH</span>
+                <span class="footer-tagline">Manufacturing Systems • Automation • Process Control</span>
+            </div>
+            <div class="footer-right">
+                <span class="footer-copyright">&copy; 2026 Processwallah. All system rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
